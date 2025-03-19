@@ -16,7 +16,7 @@
       background-image: url('imagens/fundo.jpg');
       background-size: cover;
       background-attachment: fixed;
-      background-position: center; /* Tenta centralizar o fundo */
+      background-position: center;
       background-repeat: no-repeat;
       overflow-y: auto;
       transition: background 0.5s ease-in-out;
@@ -96,6 +96,20 @@
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+    /* Estilos dos links na Página 8 (estilo de botão) */
+    #kitLink, #manualLink {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    #kitLink:hover, #manualLink:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
@@ -221,18 +235,16 @@
     </div>
   </div>
 
-  <!-- Página 8 (Resultado com link, fundo dinâmico, descrição e PDF para download) -->
+  <!-- Página 8 (Resultado com link, fundo dinâmico, descrição, PDF para download e botões destacados) -->
   <div id="page8" class="container fade hidden">
     <div class="box">
       <p>
         Ao acessar o link abaixo, será exibido um kit com os produtos mais indicados para o cuidado da sua pele em casa.
         Caso prefira, é possível remover os itens que não desejar e adquirir apenas os produtos de sua escolha.
       </p>
-      <a id="kitLink" href="#" style="font-size:1.2rem; text-decoration: none; color: #007BFF;"></a>
+      <a id="kitLink" href="#" style="font-size:1.2rem; text-decoration: none;"></a>
       <br>
-      <a id="manualLink" href="#" download style="font-size:1rem; text-decoration: none; color: #007BFF; display:block; margin-top:20px;">
-        Baixe o Manual para sua Rotina
-      </a>
+      <a id="manualLink" href="#" download style="font-size:1rem; text-decoration: none; display:block; margin-top:20px;"></a>
     </div>
   </div>
 
@@ -442,10 +454,9 @@
         alert("Opção não mapeada. Tente novamente.");
         return;
       }
-      // Define o fundo da página 8 conforme o resultado
+      // Define o fundo da página 8 conforme o resultado e força sua centralização
       document.body.style.backgroundImage = "url('" + result.bg + "')";
       document.body.style.backgroundColor = "";
-      // Força a centralização do fundo
       document.body.style.backgroundPosition = "center center";
       document.body.style.backgroundRepeat = "no-repeat";
       document.body.style.backgroundSize = "cover";
@@ -456,6 +467,7 @@
       
       // Atualiza o link para baixar o manual (PDF)
       const manualLink = document.getElementById('manualLink');
+      manualLink.innerText = "Baixe o Manual para sua Rotina";
       manualLink.href = result.pdf;
       
       showPage(8);
@@ -463,3 +475,4 @@
   </script>
 </body>
 </html>
+
